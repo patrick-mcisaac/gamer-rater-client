@@ -12,6 +12,14 @@ export const Navbar = () => {
                     Home
                 </NavLink>
             </li>
+            <li>
+                <NavLink
+                    to={"/games"}
+                    className="text-3xl text-white font-semibold cursor-pointer transition hover:scale-105"
+                >
+                    Games
+                </NavLink>
+            </li>
             {localStorage.getItem("gamer_token") !== null ?
                 <li>
                     <button
