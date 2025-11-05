@@ -1,11 +1,12 @@
 import type React from "react"
 import { ReviewContext } from "./ReviewContext"
+import type { ReviewType } from "../../types/reviewTypes"
 
 interface Props {
     children: React.ReactNode
 }
 export const ReviewProvider = ({ children }: Props) => {
-    const createReview = (body: string, token: string) => {
+    const createReview = (body: ReviewType, token: string) => {
         return fetch(`http://localhost:8000/reviews`, {
             method: "POST",
             headers: {

@@ -1,3 +1,9 @@
 export interface ReviewContextTypes {
-    createReview: (body: string, token: string) => Promise<Response>
+    createReview: (body: ReviewType, token: string) => Promise<Response>
+}
+
+export interface ReviewType {
+    review: string
+    game: number
+    user?: number
 }
