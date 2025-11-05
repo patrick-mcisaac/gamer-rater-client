@@ -29,5 +29,5 @@ export interface GamesContextType {
     games: GamesType[] | undefined
     game: GamesType | undefined
     getGame: (id: string) => void
-    createGame: (data: GamesFormType) => void | Promise<Response>
+    createGame: (data: GamesFormType, tokenString: string) => Promise<Response>
 }

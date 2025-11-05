@@ -39,19 +39,15 @@ export const GamesProvider = ({ children }: Props) => {
         }
     }
 
-    const createGame = (data: GamesFormType) => {
-        const tokenString = localStorage.getItem("gamer_token")
-
-        if (tokenString) {
-            return fetch(`http://localhost:8000/games`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Token ${JSON.parse(tokenString).token}`
-                },
-                body: JSON.stringify(data)
-            })
-        }
+    const createGame = (data: GamesFormType, tokenString: string) => {
+        return fetch(`http://localhost:8000/games`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${JSON.parse(tokenString).token}`
+            },
+            body: JSON.stringify(data)
+        })
     }
     return (
         <GamesContext.Provider

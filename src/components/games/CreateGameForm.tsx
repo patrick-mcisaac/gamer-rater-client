@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import type { GamesFormType } from "../../types/gameTypes"
 import { useCategories } from "../../hooks/useCategories"
 import { useGames } from "../../hooks/useGames"
+import { useNavigate } from "react-router-dom"
 
 export const CreateGameForm = () => {
     const [game, setGame] = useState<GamesFormType>({
@@ -14,6 +15,9 @@ export const CreateGameForm = () => {
         age_recommendation: 0,
         categories: 0
     })
+
+    const tokenString = localStorage.getItem("gamer_token")
+    const navigate = useNavigate()
 
     const { getCategories, categories } = useCategories()
     const { createGame } = useGames()
@@ -51,7 +55,9 @@ export const CreateGameForm = () => {
             game.categories > 0 &&
             game.number_of_players > 0
         ) {
-            createGame(game)
+            if (tokenString) {
+                createGame(game, tokenString).then(() => navigate("/games"))
+            }
         } else {
             window.alert("fill out the form")
         }
