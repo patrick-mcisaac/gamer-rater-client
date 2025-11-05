@@ -13,6 +13,17 @@ export interface GamesType {
     player_games: Array<number>
 }
 
+export interface GamesFormType {
+    title: string
+    description: string
+    designer: string
+    year_released: string
+    number_of_players: number
+    estimated_time_to_play: number
+    age_recommendation: number
+    categories: number
+}
+
 export interface GamesContextType {
     getGames: () => void
     games: GamesType[] | undefined

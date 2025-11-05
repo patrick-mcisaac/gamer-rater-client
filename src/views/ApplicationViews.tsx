@@ -4,6 +4,7 @@ import { Login } from "../components/auth/Login"
 import { Register } from "../components/auth/Register"
 import { Games } from "../components/games/Games"
 import { GamesDetails } from "../components/games/GamesDetails"
+import { CreateGameForm } from "../components/games/CreateGameForm"
 
 export const ApplicationViews = () => {
     return (
@@ -16,6 +17,7 @@ export const ApplicationViews = () => {
                     <Route path="games" element={<Outlet />}>
                         <Route index element={<Games />} />
                         <Route path=":id" element={<GamesDetails />} />
+                        <Route path="create" element={<CreateGameForm />} />
                     </Route>
                 </Route>
             </Routes>

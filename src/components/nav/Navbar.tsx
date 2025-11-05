@@ -4,26 +4,16 @@ export const Navbar = () => {
     const navigate = useNavigate()
     return (
         <ul className="flex h-20 bg-gray-900 justify-between items-center p-10">
-            <li>
-                <NavLink
-                    to={""}
-                    className="text-3xl text-white font-semibold cursor-pointer transition hover:scale-105"
-                >
-                    Home
-                </NavLink>
+            <li className="text-3xl text-white font-semibold cursor-pointer transition hover:scale-105">
+                <NavLink to={""}>Home</NavLink>
             </li>
-            <li>
-                <NavLink
-                    to={"/games"}
-                    className="text-3xl text-white font-semibold cursor-pointer transition hover:scale-105"
-                >
-                    Games
-                </NavLink>
+            <li className="text-3xl text-white font-semibold cursor-pointer transition hover:scale-105">
+                <NavLink to={"/games"}>Games</NavLink>
             </li>
             {localStorage.getItem("gamer_token") !== null ?
                 <li>
                     <button
-                        className="text-2xl text-white font-semibold cursor-pointer transition hover:scale-105 "
+                        className="text-3xl text-white font-semibold cursor-pointer transition hover:scale-105 "
                         onClick={() => {
                             localStorage.removeItem("gamer_token")
                             navigate("/login")
