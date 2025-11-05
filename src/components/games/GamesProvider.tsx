@@ -9,6 +9,7 @@ interface Props {
 
 export const GamesProvider = ({ children }: Props) => {
     const [games, setGames] = useState<GamesType[] | undefined>()
+    const [game, setGame] = useState<GamesType | undefined>()
 
     const getGames = () => {
         const tokenString = localStorage.getItem("gamer_token")
@@ -23,8 +24,22 @@ export const GamesProvider = ({ children }: Props) => {
                 .then(setGames)
         }
     }
+
+    const getGame = (id: string) => {
+        const tokenString = localStorage.getItem("gamer_token")
+
+        if (tokenString) {
+            fetch(`http://localhost:8000/games/${id}`, {
+                headers: {
+                    Authorization: `Token ${JSON.parse(tokenString).token}`
+                }
+            })
+                .then((res) => res.json())
+                .then(setGame)
+        }
+    }
     return (
-        <GamesContext.Provider value={{ getGames, games }}>
+        <GamesContext.Provider value={{ getGames, games, game, getGame }}>
             {children}
         </GamesContext.Provider>
     )

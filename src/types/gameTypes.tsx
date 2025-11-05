@@ -14,4 +14,6 @@ export interface GamesType {
 export interface GamesContextType {
     getGames: () => void
     games: GamesType[] | undefined
+    game: GamesType | undefined
+    getGame: (id: string) => void
 }
