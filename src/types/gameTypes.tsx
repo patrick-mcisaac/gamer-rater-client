@@ -1,3 +1,5 @@
+import type { CategoryInterface } from "./CategoryTypes"
+
 export interface GamesType {
     id: number
     title: string
@@ -7,7 +9,7 @@ export interface GamesType {
     number_of_players: number
     estimated_time_to_play: number
     age_recommendation: number
-    categories: Array<number>
+    categories: Array<CategoryInterface>
     player_games: Array<number>
 }
 
