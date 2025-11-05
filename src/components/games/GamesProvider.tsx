@@ -1,6 +1,6 @@
 import type React from "react"
 import { GamesContext } from "./GamesContext"
-import type { GamesType } from "../../types/gameTypes"
+import type { GamesFormType, GamesType } from "../../types/gameTypes"
 import { useState } from "react"
 
 interface Props {
@@ -38,8 +38,25 @@ export const GamesProvider = ({ children }: Props) => {
                 .then(setGame)
         }
     }
+
+    const createGame = (data: GamesFormType) => {
+        const tokenString = localStorage.getItem("gamer_token")
+
+        if (tokenString) {
+            return fetch(`http://localhost:8000/games`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Token ${JSON.parse(tokenString).token}`
+                },
+                body: JSON.stringify(data)
+            })
+        }
+    }
     return (
-        <GamesContext.Provider value={{ getGames, games, game, getGame }}>
+        <GamesContext.Provider
+            value={{ getGames, games, game, getGame, createGame }}
+        >
             {children}
         </GamesContext.Provider>
     )
