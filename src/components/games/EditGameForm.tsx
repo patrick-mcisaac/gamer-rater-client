@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react"
 import { useCategories } from "../../hooks/useCategories"
 import { useGames } from "../../hooks/useGames"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import type { GamesFormType } from "../../types/gameTypes"
 
 export const EditGameForm = () => {
     const { getCategories, categories } = useCategories()
-    const [formGame, setFormGame] = useState<GamesFormType>()
+    const [formGame, setFormGame] = useState<GamesFormType | undefined>(
+        undefined
+    )
     const { game, getGame, updateGame } = useGames()
+
+    const navigate = useNavigate()
 
     const { id } = useParams()
 
@@ -25,10 +29,10 @@ export const EditGameForm = () => {
         if (game) {
             setFormGame({
                 ...game,
-                categories: categories ? categories[0].id : 0
+                categories: game.categories ? game.categories[0].id : 0
             })
         }
-    }, [game])
+    }, [game, id])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         // TODO: make typescript accept this somehow
@@ -50,7 +54,7 @@ export const EditGameForm = () => {
         e.preventDefault()
 
         if (id && formGame) {
-            updateGame(id, formGame)
+            updateGame(id, formGame)?.then(() => navigate(`/games/${id}`))
         }
     }
 
