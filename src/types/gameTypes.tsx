@@ -12,6 +12,7 @@ export interface GamesType {
     categories: Array<CategoryInterface>
     player_games: Array<number>
     is_creator: boolean
+    average_rating: number
 }
 
 export interface GamesFormType {

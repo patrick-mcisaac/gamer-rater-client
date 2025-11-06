@@ -5,15 +5,18 @@ import { ApplicationViews } from "./views/ApplicationViews"
 import { GamesProvider } from "./components/games/GamesProvider"
 import { CategoriesProvider } from "./components/categories/CategoriesProvider"
 import { ReviewProvider } from "./components/reviews/ReviewProvider"
+import { RatingsProvider } from "./components/ratings/RatingsProvider"
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         <CategoriesProvider>
-            <ReviewProvider>
-                <GamesProvider>
-                    <ApplicationViews />
-                </GamesProvider>
-            </ReviewProvider>
+            <RatingsProvider>
+                <ReviewProvider>
+                    <GamesProvider>
+                        <ApplicationViews />
+                    </GamesProvider>
+                </ReviewProvider>
+            </RatingsProvider>
         </CategoriesProvider>
     </StrictMode>
 )

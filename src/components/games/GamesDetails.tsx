@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useGames } from "../../hooks/useGames"
 import { ReviewsList } from "../reviews/ReviewsList"
 import { useReviews } from "../../hooks/useReviews"
+import { Ratings } from "../ratings/Ratings"
 
 export const GamesDetails = () => {
     const { id } = useParams()
@@ -30,6 +31,7 @@ export const GamesDetails = () => {
                         <h2 className="text-2xl font-semibold">
                             {game.designer}
                         </h2>
+                        <p>{game.average_rating} Stars</p>
                     </div>
                     <div>
                         <p>Released in {game.year_released.split("-")[0]}</p>
@@ -48,13 +50,15 @@ export const GamesDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center justify-evenly gap-20">
+                <div className="flex items-end justify-evenly gap-20">
                     <button
                         onClick={() => navigate(`/games/${id}/review`)}
                         className="bg-gray-700 w-20 cursor-pointer h-10 rounded-lg md:w-50 text-white hover:scale-105 hover:bg-gray-900"
                     >
                         Review
                     </button>
+                    <Ratings />
+
                     {game.is_creator ?
                         <button
                             onClick={() => navigate(`/games/${id}/edit`)}
