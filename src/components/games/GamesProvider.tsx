@@ -49,9 +49,24 @@ export const GamesProvider = ({ children }: Props) => {
             body: JSON.stringify(data)
         })
     }
+
+    const updateGame = (id: string, body: GamesFormType) => {
+        const tokenString = localStorage.getItem("gamer_token")
+
+        if (tokenString) {
+            return fetch(`http://localhost:8000/games/${id}`, {
+                method: "PUT",
+                headers: {
+                    Authorization: `Token ${JSON.parse(tokenString).token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body)
+            })
+        }
+    }
     return (
         <GamesContext.Provider
-            value={{ getGames, games, game, getGame, createGame }}
+            value={{ getGames, games, game, getGame, createGame, updateGame }}
         >
             {children}
         </GamesContext.Provider>

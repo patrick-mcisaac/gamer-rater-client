@@ -11,6 +11,7 @@ export interface GamesType {
     age_recommendation: number
     categories: Array<CategoryInterface>
     player_games: Array<number>
+    is_creator: boolean
 }
 
 export interface GamesFormType {
@@ -30,4 +31,8 @@ export interface GamesContextType {
     game: GamesType | undefined
     getGame: (id: string) => void
     createGame: (data: GamesFormType, tokenString: string) => Promise<Response>
+    updateGame: (
+        id: string,
+        body: GamesFormType
+    ) => Promise<Response> | undefined
 }

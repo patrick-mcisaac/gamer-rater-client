@@ -48,12 +48,22 @@ export const GamesDetails = () => {
                         </div>
                     </div>
                 </div>
-                <button
-                    onClick={() => navigate(`/games/${id}/review`)}
-                    className="bg-gray-700 w-20 cursor-pointer h-10 rounded-lg md:w-50 text-white hover:scale-105 hover:bg-gray-900"
-                >
-                    Review
-                </button>
+                <div className="flex items-center justify-evenly gap-20">
+                    <button
+                        onClick={() => navigate(`/games/${id}/review`)}
+                        className="bg-gray-700 w-20 cursor-pointer h-10 rounded-lg md:w-50 text-white hover:scale-105 hover:bg-gray-900"
+                    >
+                        Review
+                    </button>
+                    {game.is_creator ?
+                        <button
+                            onClick={() => navigate(`/games/${id}/edit`)}
+                            className="bg-gray-700 w-20 cursor-pointer h-10 rounded-lg md:w-50 text-white hover:scale-105 hover:bg-gray-900"
+                        >
+                            Edit
+                        </button>
+                    :   ""}
+                </div>
                 <div className="flex flex-col gap-5 md:gap-15 ">
                     {reviews &&
                         reviews?.map((review) => (
