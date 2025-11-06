@@ -14,17 +14,17 @@ export const Games = () => {
     }, [])
 
     return (
-        <div className="flex flex-col p-5 justify-center items-center">
+        <div className="flex flex-col p-5 md:gap-10 justify-center items-center">
             <h1 className="text-[4rem] mt-[2rem] font-semibold tracking-wider">
                 Games
             </h1>
             <button
                 onClick={() => navigate("/games/create")}
-                className=" mt-3 rounded-xl  h-10 w-40 cursor-pointer bg-gray-700 text-white hover:bg-gray-900 hover:scale-105 transition"
+                className=" mt-3  rounded-xl  h-10 w-40 cursor-pointer bg-gray-700 text-white hover:bg-gray-900 hover:scale-105 transition"
             >
                 Register New Game
             </button>
-            <div className="flex justify-around items-center flex-wrap gap-5 mt-[2.5rem]">
+            <div className="flex justify-around items-center flex-wrap gap-5 md:gap-10 mt-[2.5rem]">
                 {games &&
                     games.map((game) => (
                         <GamesList key={game.id} game={game} />
