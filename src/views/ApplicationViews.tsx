@@ -8,6 +8,7 @@ import { CreateGameForm } from "../components/games/CreateGameForm"
 import { ReviewForm } from "../components/reviews/ReviewForm"
 import { EditGameForm } from "../components/games/EditGameForm"
 import { ImageForm } from "../components/gameImage/ImageForm"
+import { Home } from "../components/home/Home"
 
 export const ApplicationViews = () => {
     return (
@@ -16,7 +17,7 @@ export const ApplicationViews = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route element={<Authorized />}>
-                    <Route index element={<div>Hey</div>} />
+                    <Route index element={<Home />} />
                     <Route path="games" element={<Outlet />}>
                         <Route index element={<Games />} />
                         <Route path=":id" element={<Outlet />}>

@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 export const Navbar = () => {
     const navigate = useNavigate()
     return (
-        <ul className="flex h-20 bg-gray-900 justify-between items-center p-10">
+        <ul className="flex h-20 bg-gray-900 justify-between w-full items-center fixed p-10">
             <li className="text-3xl text-white font-semibold cursor-pointer transition hover:scale-105">
                 <NavLink to={""}>Home</NavLink>
             </li>

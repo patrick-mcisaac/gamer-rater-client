@@ -63,9 +63,9 @@ export const CreateGameForm = () => {
         }
     }
     return (
-        <div className="flex flex-col mt-10 gap-5 items-center">
+        <div className="flex flex-col h-screen p-30 gap-5 items-center">
             <h1 className="text-center text-3xl">Register a game</h1>
-            <form className="flex gap-5 flex-col">
+            <form className="flex gap-5 pb-5 flex-col">
                 <fieldset className="flex flex-col">
                     <label htmlFor="title">Title</label>
                     <input

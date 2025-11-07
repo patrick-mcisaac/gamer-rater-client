@@ -35,14 +35,16 @@ export const ImageForm = () => {
         }
     }
     return game ?
-            <div>
+            <div className="h-screen flex flex-col items-center justify-center">
                 <input
+                    className="rounded border pl-2"
                     type="file"
                     id="game_image"
                     onChange={createGameImageString}
                 />
                 <input type="hidden" name="game_id" value={game.id} />
                 <button
+                    className="rounded-xl mt-5 hover:scale-105 cursor-pointer hover:bg-gray-900 text-white bg-gray-700 w-20"
                     onClick={() => {
                         const token = localStorage.getItem("gamer_token")
                         if (id) {

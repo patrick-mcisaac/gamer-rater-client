@@ -36,16 +36,15 @@ export const ReviewForm = () => {
         }
     }
     return (
-        <form className="flex flex-col justify-center items-center mt-20">
+        <form className="flex flex-col justify-center items-center pt-30 md:pt-50">
             <fieldset>
                 <textarea
                     onChange={(e) =>
                         setReview({ ...review, review: e.target.value })
                     }
-                    cols={90}
                     rows={20}
                     ref={textAreaRef}
-                    className="border"
+                    className="border w-75 md:w-150"
                     value={review.review}
                 ></textarea>
             </fieldset>
