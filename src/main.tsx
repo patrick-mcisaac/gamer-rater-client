@@ -6,17 +6,20 @@ import { GamesProvider } from "./components/games/GamesProvider"
 import { CategoriesProvider } from "./components/categories/CategoriesProvider"
 import { ReviewProvider } from "./components/reviews/ReviewProvider"
 import { RatingsProvider } from "./components/ratings/RatingsProvider"
+import { ImageProvider } from "./components/gameImage/ImageProvider"
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         <CategoriesProvider>
-            <RatingsProvider>
-                <ReviewProvider>
-                    <GamesProvider>
-                        <ApplicationViews />
-                    </GamesProvider>
-                </ReviewProvider>
-            </RatingsProvider>
+            <ImageProvider>
+                <RatingsProvider>
+                    <ReviewProvider>
+                        <GamesProvider>
+                            <ApplicationViews />
+                        </GamesProvider>
+                    </ReviewProvider>
+                </RatingsProvider>
+            </ImageProvider>
         </CategoriesProvider>
     </StrictMode>
 )

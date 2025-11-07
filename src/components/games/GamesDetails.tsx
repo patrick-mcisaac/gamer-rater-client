@@ -22,7 +22,7 @@ export const GamesDetails = () => {
     }, [id])
 
     return game ?
-            <div className="flex flex-col items-center mt-15 gap-5 md:gap-20 justify-center md:mt-40">
+            <div className="flex flex-col items-center mt-15 gap-5 md:gap-20 justify-center md:mt-31">
                 <div className="border-gray-500 border-2 text-center rounded-2xl w-[20rem] shadow-2xl shadow-gray-400 p-[1rem_0] flex flex-col justify-around h-[25rem] md:w-[35rem] items-center">
                     <div className="flex flex-col gap-2 items-center">
                         <h1 className="text-3xl font-semibold tracking-wider">
@@ -67,6 +67,12 @@ export const GamesDetails = () => {
                             Edit
                         </button>
                     :   ""}
+                    <button
+                        onClick={() => navigate(`/games/${id}/image/upload`)}
+                        className="bg-gray-700 w-20 cursor-pointer h-10 rounded-lg md:w-50 text-white hover:scale-105 hover:bg-gray-900"
+                    >
+                        Upload action image
+                    </button>
                 </div>
                 <div className="flex flex-col gap-5 md:gap-15 ">
                     {reviews &&
