@@ -39,6 +39,20 @@ export const GamesProvider = ({ children }: Props) => {
         }
     }
 
+    const sortGames = (sortTerm: string) => {
+        const tokenString = localStorage.getItem("gamer_token")
+
+        if (tokenString) {
+            fetch(`http://localhost:8000/games?orderby=${sortTerm}`, {
+                headers: {
+                    Authorization: `Token ${JSON.parse(tokenString).token}`
+                }
+            })
+                .then((res) => res.json())
+                .then(setGames)
+        }
+    }
+
     const getGame = (id: string) => {
         const tokenString = localStorage.getItem("gamer_token")
 
@@ -87,7 +101,8 @@ export const GamesProvider = ({ children }: Props) => {
                 getGame,
                 createGame,
                 updateGame,
-                searchGames
+                searchGames,
+                sortGames
             }}
         >
             {children}

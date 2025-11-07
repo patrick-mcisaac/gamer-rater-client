@@ -8,7 +8,7 @@ export const SearchGames = () => {
     return (
         <input
             type="text"
-            className="rounded border pl-2 self-start ml-15 mt-5"
+            className="rounded border pl-2"
             placeholder="Search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}

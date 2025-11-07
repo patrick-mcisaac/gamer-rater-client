@@ -37,4 +37,5 @@ export interface GamesContextType {
         body: GamesFormType
     ) => Promise<Response> | undefined
     searchGames: (searchTerm: string) => void
+    sortGames: (sortTerm: string) => void
 }
