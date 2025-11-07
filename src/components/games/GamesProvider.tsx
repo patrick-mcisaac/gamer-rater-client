@@ -25,6 +25,20 @@ export const GamesProvider = ({ children }: Props) => {
         }
     }
 
+    const searchGames = (searchTerm: string) => {
+        const tokenString = localStorage.getItem("gamer_token")
+
+        if (tokenString) {
+            fetch(`http://localhost:8000/games?q=${searchTerm}`, {
+                headers: {
+                    Authorization: `Token ${JSON.parse(tokenString).token}`
+                }
+            })
+                .then((res) => res.json())
+                .then(setGames)
+        }
+    }
+
     const getGame = (id: string) => {
         const tokenString = localStorage.getItem("gamer_token")
 
@@ -66,7 +80,15 @@ export const GamesProvider = ({ children }: Props) => {
     }
     return (
         <GamesContext.Provider
-            value={{ getGames, games, game, getGame, createGame, updateGame }}
+            value={{
+                getGames,
+                games,
+                game,
+                getGame,
+                createGame,
+                updateGame,
+                searchGames
+            }}
         >
             {children}
         </GamesContext.Provider>

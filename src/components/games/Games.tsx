@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useGames } from "../../hooks/useGames"
 import { GamesList } from "./GamesList"
 import { useNavigate } from "react-router-dom"
+import { SearchGames } from "./SearchGames"
 
 export const Games = () => {
     const { getGames, games } = useGames()
@@ -15,6 +16,7 @@ export const Games = () => {
 
     return (
         <div className="flex flex-col p-5 md:gap-10 justify-center items-center">
+            <SearchGames />
             <h1 className="text-[4rem] mt-[2rem] font-semibold tracking-wider">
                 Games
             </h1>
